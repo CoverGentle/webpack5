@@ -84,7 +84,20 @@ module.exports = {
       {
         test:/\.(woff|woff2|eot|ttf|otf)$/,
         type:'asset/resource'
+      },
+
+      // 记载babel
+      {
+        test:/\.js$/,
+        exclude:/node_module/,
+        use:{
+          loader:'babel-loader',
+          options:{
+            presets:['@babel/preset-env']
+          }
+        }
       }
+
     ]
   },
 
