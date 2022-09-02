@@ -12,7 +12,10 @@ module.exports = {
   },
 
   // 模型
-  mode:'none',
+  mode:'development',  //默认值:producti   development production none 
+
+  // 精准定位错误代码的位子
+  devtool:'inline-source-map', //精准定位错误代码的位子
 
   // 插件
   plugins:[
@@ -21,5 +24,10 @@ module.exports = {
       filename:'app.html',  //生成的html文件名
       inject:'body' //生成的js文件放在那个块级元素下面
     })
-  ]
+  ],
+
+  // hmr热更新
+  devServer:{
+    static:'./dist'
+  }
 }
