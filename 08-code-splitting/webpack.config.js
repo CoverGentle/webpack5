@@ -4,11 +4,25 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin') //抽离css插�
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin') //压缩css插件
 module.exports = {
   // 入口
-  entry: './src/index.js',
+  entry: {
+    index:'./src/index.js',
+    another:'./src/another-module.js'
+
+    // 防止打包重复的插件或代码 
+    // index:{
+    //   import:'./src/index.js',
+    //   dependOn:'shared'
+    // },
+    // another:{
+    //   import:'./src/another-module.js',
+    //   dependOn:'shared'
+    // },
+    // shared:'lodash'
+  },
 
   // 出口
   output: {
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, './dist'), //实现绝对定位寻找到文件夹
     clean: true, //打包清除之前打包的文件
     assetModuleFilename: 'images/[contenthash][ext]'  //自定义resource文件目录
@@ -107,6 +121,11 @@ module.exports = {
     minimizer:[
        // 压缩css文件
       new CssMinimizerPlugin()
-    ]
+    ],
+
+    //webpack内置插件，进行代码分割、抽离，放置到单独的文件夹
+    splitChunks:{
+      chunks:'all'
+    }
   }
 }
