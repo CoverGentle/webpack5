@@ -1,0 +1,10 @@
+{
+  "scripts":{
+    "build:dev":"webpack -c ./config/webpack.config.js --env development",
+    "build:pro":"webpack -c ./config/webpack.config.js --env production",
+    "preview:dev":"webpack serve -c ./config.webpack.config.js --env development",
+    "preview:pro":"webpack serve -c ./config/webpack.config.js --env production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+    
+  }
+}

@@ -1,5 +1,5 @@
 const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin') //主要作用就是在webpack构建后生成html文件，同时把构建好入口js文件引入到生成的html文件中
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') //抽离css插件
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin') //压缩css插件
 const TerserPlugin = require('terser-webpack-plugin') //压缩js文件
@@ -9,6 +9,7 @@ module.exports = (env) => {
   return {
     // 入口
     entry: {
+      // 多个入口文件打包
       index: './src/index.js',
       another: './src/another-module.js'
 
@@ -26,11 +27,11 @@ module.exports = (env) => {
 
     // 出口
     output: {
-      filename: 'scripts/[name].[contenthash].js',
+      filename: 'scripts/[name].[contenthash].js', //打包的js文件放置scripts文件夹中。使用[contenthash]便于解决浏览器缓存问题
       path: path.resolve(__dirname, './dist'), //实现绝对定位寻找到文件夹
       clean: true, //打包清除之前打包的文件
       assetModuleFilename: 'images/[contenthash][ext]',  //自定义resource文件目录
-      publicPath: 'http://localhost:8080/'
+      publicPath: 'http://localhost:8080/' //公共文件路径
     },
 
     // 模型
@@ -41,8 +42,9 @@ module.exports = (env) => {
 
     // 插件
     plugins: [
+      //webpack打包之后生成html文件，并且把打包好的js文件引入到html中来
       new HtmlWebpackPlugin({
-        template: './index.html', //模板基于
+        template: './index.html', //生成的html文件模板基于文件夹中的html
         filename: 'app.html',  //生成的html文件名
         inject: 'body' //生成的js文件放在那个块级元素下面
       }),
@@ -127,11 +129,14 @@ module.exports = (env) => {
         // 压缩css文件
         new CssMinimizerPlugin(),
         // 压缩js文件
-        new TerserPlugin()
+        new TerserPlugin({
+          extractComments:false //取消打包出license文件
+        })
       ],
 
       //webpack内置插件，进行代码分割、抽离，放置到单独的文件夹
       splitChunks: {
+        // 
         cacheGroups: {
           vendor: {
             test: /[\\/]node_modules[\\/]/,
