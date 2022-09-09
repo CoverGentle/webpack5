@@ -1,0 +1,19 @@
+{
+    "env": { //脚本运行环境
+        "browser": true,
+        "es2021": true
+    },
+    // "extends": "airbnb-base", //检查代码格式
+    "overrides": [
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "rules": {
+      "no-console": 0
+    },
+    "globals":{
+
+    }
+}

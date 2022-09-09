@@ -19,10 +19,15 @@ module.exports = {
     ]
   },
   devServer:{
-    hot:fasle
+    hot:true,  //模块热替换
+    liveReload:true, //热加载
   },
   plugins:[
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin(
+      {
+        template:'./index.html'
+      }
+    ),
    
   ]
 }

@@ -1,4 +1,5 @@
 import './style.css'
+import './input.js'
 const button = document.createElement('button')
 button.textContent = "点击执行"
 button.addEventListener('click',()=>{
