@@ -61,4 +61,15 @@
   ### source-map （用于开发程序员debug更方便）
 
 
+  ### webpack模块解析简易原理
+  - js、css、less、img、html等文件 ——————> loader+module（
+  ```
+  compiler
+  resolvers
+  enhanced-resolve
+
+  ```
+  ）  ——————>  模块化的文件
+
+
 
