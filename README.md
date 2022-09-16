@@ -70,6 +70,17 @@
 
   ```
   ）  ——————>  模块化的文件
+  ```
+  // 模块解析
+  resolve:{
+    alias:{
+      '@':path.resolve(__dirname,'./src')
+    },
+    // 外部扩展优先执行前面的文件类型
+    extensions:['.json','.js','.vue']
+  }
+
+  ```
 
 
 

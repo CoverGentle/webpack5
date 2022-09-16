@@ -7,7 +7,9 @@
 
 const math = require('@/math.js') 
 const _ = require('lodash')
+const mathJson = require('/src/main.json')
 
 console.log(math.add(4, 5));
-const str = _.join(['hello','webpack'],' ')
+const str = _.join(['hello','webpack'],' ');
 console.log(str);
+console.log(mathJson,'mathJson');
